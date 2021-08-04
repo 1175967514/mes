@@ -1,0 +1,14 @@
+<template>
+  <div style="height: 100vh">历史轨迹曲线</div>
+</template>
+
+<script>
+export default {
+  methods: {},
+  data() {
+    return {};
+  },
+};
+</script>
+
+<style lang="stylus" scoped ></style>

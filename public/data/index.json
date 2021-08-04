@@ -1,0 +1,43 @@
+{
+    "flag": true,
+    "code": 20000,
+    "message": "查询成功",
+    "data": {
+        "supermarketNum": 2968,
+        "supplierNum": 2841,
+        "goodsList": [
+            {
+                "num": 118,
+                "pricce": 6250,
+                "title": "250ml伊利纯牛奶1*24"
+            },
+            {
+                "num": 93,
+                "pricce": 6231,
+                "title": "250ml古城1*25"
+            },
+            {
+                "num": 83,
+                "pricce": 2656,
+                "title": "250ml伊利酸奶（原）1*24"
+            },
+            {
+                "num": 74,
+                "pricce": 2368,
+                "title": "250ml伊利酸奶（草）1*24"
+            },
+            {
+                "num": 44,
+                "pricce": 11660,
+                "title": "125ml劲酒1*24"
+            }
+        ],
+        "orderList": [
+            {
+                "money": 5.57,
+                "avgMoney": 960.9,
+                "turnover": 58
+            }
+        ]
+    }
+}
