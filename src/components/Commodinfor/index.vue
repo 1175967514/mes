@@ -110,7 +110,7 @@
               @click="handleEdit(row)"
               >编辑</el-button
             >
-            <el-button type="text">查看</el-button>
+            <el-button type="text" @click="goDetail(row)">查看</el-button>
             <el-button type="text">删除</el-button>
           </template>
         </el-table-column>
@@ -146,6 +146,7 @@ export default {
       },
       tableData: [
         {
+          id: 1,
           zz: '恒源祥',
           cj: '一仿',
           gx: '清花',
@@ -158,6 +159,7 @@ export default {
           status: 1
         },
         {
+          id: 2,
           zz: '恒源祥',
           cj: '一仿',
           gx: '清花',
@@ -218,7 +220,7 @@ export default {
   methods: {
     getData() {},
     handleEdit(row) {
-      console.log(row);
+      this.$router.push({ path: '/Commodinfor/Add', query: { id: row.id } });
     },
     handleRemove() {
       this.$confirm('删除后该条通知单则不可找回，你还要继续吗?', '删除通知单', {
@@ -253,6 +255,9 @@ export default {
     handleCurrentChange(val) {
       this.search.pageNum = val;
       this.getData();
+    },
+    goDetail(row) {
+      this.$router.push('/Commodinfor/Detail');
     }
   }
 };

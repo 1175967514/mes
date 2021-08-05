@@ -4,45 +4,47 @@
       <div class="go-back" @click="goBack">
         <i class="el-icon-arrow-left"></i>
       </div>
-      工艺变更通知单录入
+      工艺变更通知单详情
+      <div class="btn-list" style="margin-left:auto">
+        <el-button size="medium" type="info">打印</el-button>
+        <el-button size="medium" type="info">上一条</el-button>
+        <el-button size="medium" type="info">下一条</el-button>
+        <el-button size="medium" type="info">查询</el-button>
+      </div>
     </div>
-    <el-form class="form" :model="form" label-width="70px">
-      <el-form-item label="组织">
-        <el-select clearable></el-select>
+    <el-form class="form" :model="form" label-width="84px">
+      <el-form-item label="组织：">
+        <div class="content">组织</div>
       </el-form-item>
-      <el-form-item label="工序">
-        <el-select clearable></el-select>
+      <el-form-item  label="工序：">
+        <div class="content">组织</div>
       </el-form-item>
-      <el-form-item label="车间">
-        <el-select></el-select>
+      <el-form-item placeholder="" label="车间：">
+        <div class="content">组织</div>
       </el-form-item>
-      <el-form-item label="设备类型">
-        <el-select></el-select>
+      <el-form-item placeholder="" label="设备类型：">
+        <div class="content">组织</div>
       </el-form-item>
-      <el-form-item label="通知时间">
-        <el-date-picker value-format="yyyy-MM-dd" clearable></el-date-picker>
+      <el-form-item label="通知时间：">
+        <div class="content">组织</div>
       </el-form-item>
-      <el-form-item label="审核人">
-        <el-input type="text"></el-input>
+      <el-form-item label="审核人：">
+        <div class="content">组织</div>
       </el-form-item>
-      <el-form-item label="送达部门">
-        <el-input type="text"></el-input>
+      <el-form-item label="送达部门：">
+        <div class="content">组织</div>
       </el-form-item>
-      <el-form-item label="实验室">
-        <el-input type="text"></el-input>
+      <el-form-item label="实验室：">
+        <div class="content">组织</div>
       </el-form-item>
-      <el-form-item label="备注">
-        <el-input type="textarea" :rows="3"></el-input>
+      <el-form-item label="备注：">
+        <div class="content"></div>
       </el-form-item>
     </el-form>
     <div class="btn-list">
       <div>
         <span class="label">设备机台</span
         ><el-select size="medium" placeholder="选择机台"></el-select>
-      </div>
-      <div>
-        <el-button size="medium" type="info" @click="addRow">增行</el-button>
-        <el-button size="medium" type="info" @click="minusRow">减行</el-button>
       </div>
     </div>
     <div class="detail-table">
@@ -68,33 +70,20 @@
           :resizable="false"
           align="center"
         >
-          <template slot-scope="{ row }">
-            <el-select v-model="row.project" clearable> </el-select>
-          </template>
         </el-table-column>
         <el-table-column min-width="30%" :resizable="false" align="center">
           <template slot="header">
-            <span style="color:#f56c6c">*</span>
             <span style="font-weight:normal">变更前： </span>
             <el-select size="medium" placeholder="请选择品种名称"></el-select>
           </template>
-          <template slot-scope="{ row }">{{ row.change }}</template>
         </el-table-column>
         <el-table-column min-width="30%" :resizable="false" align="center">
           <template slot="header">
-            <span style="color:#f56c6c">*</span>
             <span style="font-weight:normal">变更后： </span>
             <el-select size="medium" placeholder="请选择品种名称"></el-select>
           </template>
-          <template slot-scope="{ row }">{{ row.changed }}</template>
         </el-table-column>
       </el-table>
-    </div>
-    <div class="operate-btn">
-      <el-button size="medium">复制新增</el-button>
-      <el-button size="medium">取消</el-button>
-      <el-button size="medium">保存</el-button>
-      <el-button size="medium" type="primary">提交</el-button>
     </div>
   </div>
 </template>

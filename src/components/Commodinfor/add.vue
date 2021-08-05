@@ -103,10 +103,18 @@
 export default {
   data() {
     return {
+      id: '',
       tableData: [{ project: '项目1', change: '', changed: '' }]
     };
   },
-  created() {},
+  created() {
+    this.id = this.$route.query.id;
+  },
+  watch: {
+    $route: function(val) {
+      this.id = val.query.id;
+    }
+  },
   methods: {
     goBack() {
       this.$router.push('/Commodinfor');
