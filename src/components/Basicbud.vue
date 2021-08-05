@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 100vh">实时查询</div>
+  <div style="height: 100vh">实时查询1z</div>
 </template>
 
 <script>
