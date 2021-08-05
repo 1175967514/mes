@@ -29,7 +29,9 @@
       <el-button size="medium" type="info" @click="handleRemove"
         >删除通知单</el-button
       >
-      <el-button size="medium" type="info">导入通知单</el-button>
+      <el-button size="medium" type="info" @click="importVis = true"
+        >导入通知单</el-button
+      >
       <el-button size="medium" type="info">导出通知单</el-button>
       <el-button size="medium" type="info">打印通知单</el-button>
       <el-button
@@ -111,7 +113,7 @@
               >编辑</el-button
             >
             <el-button type="text" @click="goDetail(row)">查看</el-button>
-            <el-button type="text">删除</el-button>
+            <el-button type="text" @click="removeData(row.id)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -128,6 +130,26 @@
       >
       </el-pagination>
     </div>
+    <el-dialog
+      title="导入通知单"
+      :visible.sync="importVis"
+      width="340px"
+      top="30vh"
+      center
+    >
+      <div class="center-dialog">
+        <el-button icon="el-icon-upload2">默认按钮</el-button>
+      </div>
+      <div class="center-dialog">
+        支持扩展名：.doc .xlsx <el-link type="primary">下载模板</el-link>
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button size="small" @click="importVis = false">取 消</el-button>
+        <el-button size="small" type="primary" @click="importVis = false"
+          >确 定</el-button
+        >
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -135,6 +157,7 @@
 export default {
   data() {
     return {
+      importVis: false,
       search: {
         zz: '',
         cj: '',
@@ -222,27 +245,37 @@ export default {
     handleEdit(row) {
       this.$router.push({ path: '/Commodinfor/Add', query: { id: row.id } });
     },
+    removeData(id) {
+      console.log(id);
+    },
     handleRemove() {
-      this.$confirm('删除后该条通知单则不可找回，你还要继续吗?', '删除通知单', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        customClass: 'delete-dialog',
-        center: true
-      })
-        .then(() => {
-          let selection = this.$refs.commodinforTable.selection;
-          console.log(selection);
-          this.$message({
-            type: 'success',
-            message: '删除成功!'
+      let selection = this.$refs.commodinforTable.selection;
+      if (selection) {
+        this.$confirm(
+          '删除后该条通知单则不可找回，你还要继续吗?',
+          '删除通知单',
+          {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            customClass: 'delete-dialog',
+            center: true
+          }
+        )
+          .then(() => {
+            this.removeData(selection);
+          })
+          .catch(() => {
+            this.$message({
+              type: 'info',
+              message: '已取消删除'
+            });
           });
-        })
-        .catch(() => {
-          this.$message({
-            type: 'info',
-            message: '已取消删除'
-          });
+      } else {
+        this.$message({
+          type: 'info',
+          message: '请先选择一条数据！'
         });
+      }
     },
     statusFormatter(row) {
       return row.status == 0 ? '新增' : '生效';
@@ -365,5 +398,17 @@ export default {
     display:flex;
     justify-content:center;
   }
+}
+.el-dialog.el-dialog--center .center-dialog{
+    display:flex;
+    justify-content:center;
+    margin-bottom:20px;
+    .el-link{
+      margin-left:5px;
+      text-decoration:underline
+    }
+    &:last-child{
+      margin-bottom:0
+    }
 }
 </style>
