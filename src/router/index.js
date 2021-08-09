@@ -40,10 +40,12 @@ import Systemenal from '../components/Systemenal.vue'
 import Systemetem from '../components/Systemetem.vue'
 import Systemshop from '../components/Systemshop.vue'
 import TableMan from '../components/TableMan.vue'
-// about
 import Commodinfor from '../components/Commodinfor'
 import CommodinforAdd from '../components/Commodinfor/add.vue'
 import CommodinforDetail from '../components/Commodinfor/detail.vue'
+import Commodtem from '../components/Commodtem'
+import CommodtemAdd from '../components/Commodtem/add.vue'
+import CommodtemDetail from '../components/Commodtem/detail.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -65,18 +67,6 @@ const routes = [
     component: Family,
 
     children: [
-      // 工艺单变更管理
-      {
-        path: '/Commodinfor',
-        component: Commodinfor
-      },
-      {
-        path: '/Commodinfor/Add',
-        component: CommodinforAdd
-      }, {
-        path: '/Commodinfor/Detail',
-        component: CommodinforDetail
-      },
       // 登录
       {
         path: '/Login',
@@ -191,6 +181,30 @@ const routes = [
       {
         path: '/Commodunit',
         component: Commodunit
+      },
+      // 工艺单变更管理
+      {
+        path: '/Commodinfor',
+        component: Commodinfor
+      },
+      {
+        path: '/Commodinfor/Add',
+        component: CommodinforAdd
+      }, {
+        path: '/Commodinfor/Detail',
+        component: CommodinforDetail
+      },
+      // 工艺模版管理
+      {
+        path: '/Commodtem',
+        component: Commodtem
+      },
+      {
+        path: '/Commodtem/Add',
+        component: CommodtemAdd
+      }, {
+        path: '/Commodtem/Detail',
+        component: CommodtemDetail
       },
       // 工单管理
       {

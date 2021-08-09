@@ -1,8 +1,12 @@
 import axios from 'axios';
 
-import { Message } from 'element-ui';
+import {
+  Message
+} from 'element-ui';
 import store from '@/store';
-import { getToken } from '@/utils/auth';
+import {
+  getToken
+} from '@/utils/auth';
 // import store from '../store/index'
 // create an axios instance
 // 获取token,不包括拉取菜单树的token，拉取菜单树 @/api/login
@@ -16,7 +20,7 @@ if (userToken) {
 }
 // const TOKEN = this.$store.getters.token
 const service = axios.create({
-  baseURL: 'http://localhost:8685', // api 的 base_url
+  baseURL: 'http://1.117.162.173:8010', // api 的 base_url
   timeout: 5000, // request timeout
   headers: {
     Authorization: token,

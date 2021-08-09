@@ -16,13 +16,13 @@
       <el-form-item label="组织：">
         <div class="content">组织</div>
       </el-form-item>
-      <el-form-item  label="工序：">
+      <el-form-item label="工序：">
         <div class="content">组织</div>
       </el-form-item>
-      <el-form-item placeholder="" label="车间：">
+      <el-form-item label="车间：">
         <div class="content">组织</div>
       </el-form-item>
-      <el-form-item placeholder="" label="设备类型：">
+      <el-form-item label="设备类型：">
         <div class="content">组织</div>
       </el-form-item>
       <el-form-item label="通知时间：">
@@ -68,6 +68,7 @@
           label="项目"
           min-width="20%"
           :resizable="false"
+          xi
           align="center"
         >
         </el-table-column>

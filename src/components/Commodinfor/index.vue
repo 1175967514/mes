@@ -3,21 +3,50 @@
     <div class="title">工艺变更通知单管理</div>
     <el-form class="search" :model="search" inline>
       <el-form-item prop="zz" label="组织">
-        <el-select v-model="search.zz" clearable></el-select>
+        <el-select v-model="search.zz" clearable>
+          <el-option
+            v-for="(item, index) in orgList"
+            :key="index"
+            :label="item.org"
+            :value="item.id"
+          ></el-option>
+        </el-select>
       </el-form-item>
       <el-form-item prop="cj" label="车间">
-        <el-select v-model="search.cj" clearable></el-select>
+        <el-select v-model="search.cj" clearable>
+          <el-option
+            v-for="(item, index) in workList"
+            :key="index"
+            :label="item.workshop"
+            :value="item.id"
+          ></el-option>
+        </el-select>
       </el-form-item>
       <el-form-item prop="zz" label="工序">
-        <el-select v-model="search.gx" clearable></el-select>
+        <el-select v-model="search.gx" clearable>
+          <el-option
+            v-for="(item, index) in procedureList"
+            :key="index"
+            :label="item.pd"
+            :value="item.id"
+          ></el-option>
+        </el-select>
       </el-form-item>
       <el-form-item prop="type" label="设备类型">
-        <el-select v-model="search.type" clearable></el-select>
+        <el-select v-model="search.type" clearable>
+          <el-option
+            v-for="(item, index) in equipList"
+            :key="index"
+            :label="item.equipment"
+            :value="item.id"
+          ></el-option>
+        </el-select>
       </el-form-item>
       <el-form-item prop="time" label="时间">
         <el-date-picker
           v-model="search.time"
           value-format="yyyy-MM-dd"
+          placeholder="请选择时间"
           clearable
         ></el-date-picker>
       </el-form-item>
@@ -154,6 +183,12 @@
 </template>
 
 <script>
+import {
+  getAllOrg,
+  getAllWorkShop,
+  getAllProcedure,
+  getAllEquipment
+} from '@/api/commodinFor';
 export default {
   data() {
     return {
@@ -167,70 +202,12 @@ export default {
         pageNum: 1,
         pageSize: 10
       },
-      tableData: [
-        {
-          id: 1,
-          zz: '恒源祥',
-          cj: '一仿',
-          gx: '清花',
-          type: 'JWF1009',
-          jt: '3#',
-          ypz: 'R50S AA',
-          gpz: 'R40S AA',
-          xgr: '张三',
-          time: '2020/11/22 10:00:01',
-          status: 1
-        },
-        {
-          id: 2,
-          zz: '恒源祥',
-          cj: '一仿',
-          gx: '清花',
-          type: 'JWF1009',
-          jt: '3#',
-          ypz: 'R50S AA',
-          gpz: 'R40S AA',
-          xgr: '张三',
-          time: '2020/11/22 10:00:01',
-          status: 0
-        },
-        {
-          zz: '恒源祥',
-          cj: '一仿',
-          gx: '清花',
-          type: 'JWF1009',
-          jt: '3#',
-          ypz: 'R50S AA',
-          gpz: 'R40S AA',
-          xgr: '张三',
-          time: '2020/11/22 10:00:01',
-          status: 1
-        },
-        {
-          zz: '恒源祥',
-          cj: '一仿',
-          gx: '清花',
-          type: 'JWF1009',
-          jt: '3#',
-          ypz: 'R50S AA',
-          gpz: 'R40S AA',
-          xgr: '张三',
-          time: '2020/11/22 10:00:01',
-          status: 0
-        },
-        {
-          zz: '恒源祥',
-          cj: '一仿',
-          gx: '清花',
-          type: 'JWF1009',
-          jt: '3#',
-          ypz: 'R50S AA',
-          gpz: 'R40S AA',
-          xgr: '张三',
-          time: '2020/11/22 10:00:01',
-          status: 0
-        }
-      ],
+      // 下拉列表
+      orgList: [],
+      workList: [],
+      procedureList: [],
+      equipList: [],
+      tableData: [],
       total: 100
     };
   },
@@ -239,8 +216,44 @@ export default {
     document.getElementsByClassName(
       'el-pagination__jump'
     )[0].childNodes[0].nodeValue = '跳至';
+    this.getAllOrg();
+    this.getAllWorkShop();
+    this.getAllProcedure();
+    this.getAllEquipment();
   },
   methods: {
+    async getAllOrg() {
+      const { data } = await getAllOrg();
+      if (data.code == 1) {
+        this.orgList = data.data;
+      } else {
+        this.$message.error(data.msg);
+      }
+    },
+    async getAllWorkShop() {
+      const { data } = await getAllWorkShop();
+      if (data.code == 1) {
+        this.workList = data.data;
+      } else {
+        this.$message.error(data.msg);
+      }
+    },
+    async getAllProcedure() {
+      const { data } = await getAllProcedure();
+      if (data.code == 1) {
+        this.procedureList = data.data;
+      } else {
+        this.$message.error(data.msg);
+      }
+    },
+    async getAllEquipment() {
+      const { data } = await getAllEquipment();
+      if (data.code == 1) {
+        this.equipList = data.data;
+      } else {
+        this.$message.error(data.msg);
+      }
+    },
     getData() {},
     handleEdit(row) {
       this.$router.push({ path: '/Commodinfor/Add', query: { id: row.id } });
