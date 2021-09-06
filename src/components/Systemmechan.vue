@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 100vh">用工历史记录</div>
+  <div>用工历史记录</div>
 </template>
 
 <script>
@@ -7,8 +7,8 @@ export default {
   methods: {},
   data() {
     return {};
-  },
+  }
 };
 </script>
 
-<style lang="stylus" scoped ></style>
+<style lang="stylus" scoped></style>

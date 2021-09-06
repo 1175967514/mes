@@ -35,3 +35,10 @@ export function getAllWorkShop() {
     method: 'POST'
   })
 }
+/***********  工艺单模板  *************/
+export function getSheet() {
+  return request({
+    url: '/api-gyd/getProcessSheet',
+    method: 'POST'
+  })
+}

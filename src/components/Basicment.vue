@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 100vh">告警统计</div>
+  <div>告警统计</div>
 </template>
 
 <script>
@@ -7,8 +7,8 @@ export default {
   methods: {},
   data() {
     return {};
-  },
+  }
 };
 </script>
 
-<style lang="stylus" scoped ></style>
+<style lang="stylus" scoped></style>
