@@ -664,8 +664,15 @@ body {
     ::v-deep .el-submenu__title,.el-menu-item{
       border-radius 10px
     }
-    ::v-deep .el-submenu__title:hover,.el-menu-item:hover{
+    ::v-deep .el-submenu__title:hover,::v-deep .el-submenu.is-active .el-submenu__title{
       background-color:#E6EFF8!important;
+      color:#2A62AA!important;
+      i{
+        color:#2A62AA!important;
+      }
+    }
+    ::v-deep .el-menu-item:hover{
+      background-color:#fff!important;
       color:#2A62AA!important;
       i{
         color:#2A62AA!important;
@@ -736,6 +743,22 @@ body {
     top 5px
     left 0
   }
+}
+.common-main{
+  margin-top 20px
+  height calc(100% - 50px)
+}
+.common-search.el-form--inline{
+  .el-form-item{
+    margin-right 15px
+    margin-bottom 10px
+  }
+}
+.common-table.el-table th{
+  background #F8F9FB
+  color #292B3D
+  font-size 14px
+  font-weight 500
 }
 //全局滚动条样式
 ::-webkit-scrollbar {

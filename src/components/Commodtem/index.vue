@@ -136,7 +136,7 @@
 </template>
 
 <script>
-import { getAllProcedure, getAllEquipment, getSheet } from '@/api/commodinFor';
+import { getAllProcedure, getAllEquipment, getSheet } from '@/api/common';
 export default {
   data() {
     return {

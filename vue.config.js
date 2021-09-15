@@ -69,7 +69,16 @@ module.exports = {
   productionSourceMap: false,
   devServer: {
     port: 8080,
-    open: true
+    open: true,
+    proxy: {
+      '/api': {
+        target: 'http://39.108.91.47:8010/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that

@@ -1,10 +1,10 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-import './icons' // icon
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
+import store from './store';
+import './plugins/element.js';
+import './icons'; // icon
+import echarts from 'echarts';
 // import jquery from './utils/jquery';
 // console.log(jquery,999);
 // var $ = jquery;
@@ -13,12 +13,12 @@ import './icons' // icon
 import axios from 'axios';
 // 安装
 Vue.prototype.axios = axios;
-
-Vue.config.productionTip = false
-Vue.use(ElementUI);
+Vue.prototype.$echarts = echarts;
+Vue.config.productionTip = false;
+// Vue.use(ElementUI);
 
 new Vue({
-	store,
-    router,
-    render: h => h(App)
-}).$mount('#app')
+  store,
+  router,
+  render: h => h(App)
+}).$mount('#app');

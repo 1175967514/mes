@@ -188,7 +188,7 @@ import {
   getAllWorkShop,
   getAllProcedure,
   getAllEquipment
-} from '@/api/commodinFor';
+} from '@/api/common';
 export default {
   data() {
     return {
